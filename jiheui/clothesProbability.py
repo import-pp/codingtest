@@ -21,7 +21,7 @@ def maxClothes():
     for headNum, topNum, bottomNum, jacketNum in product(range(1,number),range(1,number),range(1,number),range(1,number)):
         if headNum+topNum+bottomNum+jacketNum == number:
             clothes.append([headNum, topNum, bottomNum,jacketNum])
-
+            
     count = 1
     total = 0
     possibleCases = {}
@@ -32,15 +32,15 @@ def maxClothes():
         [possibleClothes.append('bottom'+str(i+1)) for i in range(clothes[i][2])]
         [possibleClothes.append('jacket'+str(i+1)) for i in range(clothes[i][3])]
         possibleCases['case'+str(count)] = combination(possibleClothes)
+        print(possibleClothes)
         count+=1
         total+=combination(possibleClothes)
 
-    print("Result for each cases are:")
+    print("\nResult for each cases are:")
     for i in possibleCases:
         print(i, possibleCases[i])
 
-    print()
-    print("Total number of the possibilities are: " + str(total))
+    print("\nTotal number of the possibilities are: " + str(total))
 
    
 ##Run
