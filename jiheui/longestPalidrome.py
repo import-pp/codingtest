@@ -3,32 +3,27 @@ from itertools import combinations
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         word=[]
-        reverse = s[::-1]
-        start = 0
-        for i in range(0,len(s)):
-            for j in range(0,len(s)):
-                if s[i:j] in s[::-1] and s[i] == s[j]:
-                    word.append(s[i:j+1])
-        print(word)
-        return max(word, key=len)
+        if len(s)==1: return s
+        elif len(s)==2:
+            if s[0]==s[1]: return s
+            else: return s[0]
+        elif len(set(s))==1:
+            return s
+        else:
+            for i in range(1, len(s)-1):
+                add=1
+                while True:
+                    if add<=i and add<len(s)-i and s[i-add]==s[i+add]:
+                        word.append(s[(i-add):(i+add+1)])
+                        add+=1
+                    elif add<len(s)-i and s[i]==s[i+add]:
+                        word.append(s[i:i+add+1])
+                        add+=1
+                    else: break
+                i+=add
+            if len(word)>0: return max(word, key=len)
+            else: return ''
 
 
 
-
-solution = Solution()
-print(solution.longestPalindrome('babad'))
-print(solution.longestPalindrome('cbbd'))
-print(solution.longestPalindrome('zabaccab'))
-
-
-##Example 1:
-##Input: s = "babad"
-##Output: "bab"
-##Explanation: "aba" is also a valid answer.
-
-##Example 2:
-##Input: s = "cbbd"
-##Output: "bb"
-
-##[i for i, x in enumerate(a) if x == 'a']
 
