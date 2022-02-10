@@ -1,3 +1,4 @@
+
 /**
  1에서 시작해서 원하는 어떤 타겟 정수에 도달하는 게임이다.
  현재 정수에서 1을 증가시키거나, 현재 정수의 2배 중에 한개를 실행할 수 있다.
@@ -42,31 +43,6 @@ const minMoves = function(target, maxDoubles) {
     return count;
 };
 
-const minMoves = function(target, maxDoubles) {
-    let count = 0;
-
-    while(target > 1) {
-        if(maxDoubles > 0) {
-            if(target % 2 ===0){
-                //타겟이 짝수
-                target = target/2;
-                maxDoubles = maxDoubles-1;
-                count++;
-            } else {
-                target = target -1;
-                count++;
-            }
-        } else {
-            count = count + target - 1;
-            break;
-        }
-    }
-
-    return count;
-};
 
 
 
-const result = minMoves(8,2);
-console.log(result);
-// 19, 4
