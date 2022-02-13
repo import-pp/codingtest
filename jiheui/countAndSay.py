@@ -2,13 +2,11 @@ class Solution:
     def countAndSay(self, n: int) -> str:
         result=''
         while n>0:
-            if not result:
-                result = "1"
+            if not result: result = "1"
             else:
                 elements=[]
                 for i in result:
-                    if not elements:
-                        elements.append((i,1))
+                    if not elements: elements.append((i,1))
                     else:
                         key,value=elements[-1]
                         if key == i:
@@ -22,15 +20,3 @@ class Solution:
                     result+=str(value)+key
             n-=1
         return result
-
-
-            
-
-
-
-
-
-
-
-solution = Solution()
-print(solution.countAndSay(8))
